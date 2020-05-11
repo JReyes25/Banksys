@@ -15,6 +15,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="19,121,0,0" TextWrapping="Wrap" Text="Phone:" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="21,149,0,0" TextWrapping="Wrap" Text="Amount:" VerticalAlignment="Top"/>
         <TextBox Name="NotificationTxt" HorizontalAlignment="Left" Height="23" Margin="250,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Name="WelcomeTxt" HorizontalAlignment="Left" Margin="21,25,0,0" TextWrapping="Wrap" Text="Welcome!" VerticalAlignment="Top" Width="94"/>
 
     </Grid>
 </Window>

@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Banksys"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800">
+        Title="Login" Height="229.5" Width="326"
+        ResizeMode="NoResize">
     <Grid>
-        <Button Name="LoginBtn" Content="Login" HorizontalAlignment="Left" Margin="233,240,0,0" VerticalAlignment="Top" Width="75" Click="LoginBtn_Click"/>
-        <TextBox Name="UserTxt" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="233,152,0,0"/>
-        <TextBox Name="PasswordTxt" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="233,180,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Margin="155,153,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Margin="155,180,0,0"/>    
+        <Button Name="LoginBtn" Content="Login" HorizontalAlignment="Left" Margin="119,152,0,0" VerticalAlignment="Top" Width="76" Click="LoginBtn_Click"/>
+        <TextBox Name="UserTxt" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="119,66,0,0"/>
+        <TextBox Name="PasswordTxt" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="119,94,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Margin="41,68,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Margin="41,94,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Banksys" VerticalAlignment="Top" Margin="104,10,0,0" FontSize="30"/>
     </Grid>
 </Window>

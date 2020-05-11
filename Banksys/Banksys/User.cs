@@ -9,7 +9,7 @@ namespace Banksys
     public class User
     {
         public string name { get; set; }
-        public int id { get; set; }
+        public int UserID { get; set; }
         public bool admin { get; set; }
         public float balance { get; set; }
         public string phone { get; set; }
@@ -44,5 +44,6 @@ namespace Banksys
                 }
             } return -1;
         }
+
     }
 }

@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Banksys
 {
@@ -19,30 +22,49 @@ namespace Banksys
     /// </summary>
     public partial class Login : Window
     {
-        List<User> UsersL = new List<User>();
+        public User ActiveUser = new User();
+
+        public delegate void PassUsername(TextBox text);
 
         public Login()
         {
             InitializeComponent();
-
-            UsersL.Add(new User() { id = 0001, admin = true, name = "Jessica Vela", phone = "3477400159", balance = 267000, password = "admin" });
-            UsersL.Add(new User() { id = 0002, admin = false, name = "Jorge Reyes", phone = "2102457691", balance = 345981, password = "admin" });
-            UsersL.Add(new User() { id = 0003, admin = false, name = "Bill Gates", phone = "3474560239", balance = 108456763982, password = "admin" });
-            UsersL.Add(new User() { id = 0004, admin = false, name = "Elon Musk", phone = "3458757384", balance = 81334756238, password = "admin" });
-
         }
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            for(int i=0; i < UsersL.Count; i++)
+            string username = UserTxt.Text;
+
+            MainWindow main = new MainWindow();
+            main.ActiveUser = FindActiveUser(username);
+            PassUsername pass = new PassUsername(main.GetUsername);
+            pass(this.UserTxt);
+            main.Show();
+            this.Close();
+            
+        }
+        public User FindActiveUser(string username)
+        {
+            User ActiveUser = new User();
+            string connectionString;
+            SqlConnection con;
+            connectionString = @"Data Source=LAPTOP-PDEKB4VJ;Initial Catalog=Banksys;Integrated Security=True";
+            using (con = new SqlConnection(connectionString))
             {
-                if ((UserTxt.Text == UsersL[i].name)&&(PasswordTxt.Text == UsersL[i].password))
+                string qString = "Select * From Banksys.dbo.Users Where Username =@username ";
+                SqlCommand Command = new SqlCommand(qString, con);
+                Command.Parameters.AddWithValue("@username", username);
+                con.Open();
+                using (SqlDataReader Reader = Command.ExecuteReader())
                 {
-                    MainWindow Main = new MainWindow();
-                    Main.Show();
-                    this.Close();
+                    while (Reader.Read())
+                    {
+                        ActiveUser.name = Reader["Username"].ToString();
+                    }
+                    con.Close();
                 }
             }
-        }
+            return ActiveUser;
+        } 
     }
 }
