@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.28307.1022
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banksys", "Banksys\Banksys.csproj", "{D28CDE9E-786D-41BE-BB53-A224D8E62AB7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{F520908F-9000-435B-9E2F-0C40D97DC056}"
+	ProjectSection(SolutionItems) = preProject
+		..\Images\BanksysLogo.png = ..\Images\BanksysLogo.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

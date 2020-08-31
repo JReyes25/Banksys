@@ -3,16 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Banksys"
         mc:Ignorable="d"
-        Title="Login" Height="229.5" Width="326"
+        Title="Login" Height="340.5" Width="293.5"
         ResizeMode="NoResize">
-    <Grid>
-        <Button Name="LoginBtn" Content="Login" HorizontalAlignment="Left" Margin="119,152,0,0" VerticalAlignment="Top" Width="76" Click="LoginBtn_Click"/>
-        <TextBox Name="UserTxt" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="119,66,0,0"/>
-        <TextBox Name="PasswordTxt" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="119,94,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" Margin="41,68,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top" Margin="41,94,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Banksys" VerticalAlignment="Top" Margin="104,10,0,0" FontSize="30"/>
-    </Grid>
+
+
+    <StackPanel Background="#0f0d40">
+        <TextBlock HorizontalAlignment="Center" Text="BANKSYS" FontSize="30" Foreground="White" Margin="60 20 60 40"/>
+        <TextBlock Text="Username:" Foreground="White" Margin="40 0"/>
+        <TextBox Name="UserTxt" Padding="3" Margin="40 0" KeyDown="OnKeyHandler"/>
+        <TextBlock Text="Password:" Foreground="White" Margin="40 10 40 0"/>
+        <PasswordBox Name="PasswordTxt" Padding="3" Margin="40 0" KeyDown="OnKeyHandler"/>
+        <Button Name="LoginBtn" Content="Login" Padding="6" Margin="80 40" Click="LoginBtn_Click"/>
+     </StackPanel>
 </Window>

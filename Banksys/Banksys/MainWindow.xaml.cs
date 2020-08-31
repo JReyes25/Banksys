@@ -23,13 +23,11 @@ namespace Banksys
 
         public User ActiveUser = new User();
        
-        public void GetUsername(TextBox text)
+        public MainWindow(User ActiveUser)
         {
-            WelcomeTxt.Text = text.Text;
-        }
-        public MainWindow()
-        {
+            this.ActiveUser = ActiveUser;
             InitializeComponent();
+            this.WelcomeTxt.Text = "Welcome, " + ActiveUser.name;
         }
 
         private void TransferBtn_Click(object sender, RoutedEventArgs e)

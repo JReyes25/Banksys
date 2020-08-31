@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using Banksys.Classes;
 
 namespace Banksys
 {
@@ -23,46 +24,45 @@ namespace Banksys
     public partial class Login : Window
     {
         public User ActiveUser = new User();
-
-        public delegate void PassUsername(TextBox text);
+        public DBConnection connection= new DBConnection();
 
         public Login()
         {
             InitializeComponent();
-        }
 
+        }
+        private void OnKeyHandler(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Return)
+            {
+                LoginBtn_Click(sender, e);
+            }
+        }
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
             string username = UserTxt.Text;
+            string password = PasswordTxt.Password;
 
-            MainWindow main = new MainWindow();
-            main.ActiveUser = FindActiveUser(username);
-            PassUsername pass = new PassUsername(main.GetUsername);
-            pass(this.UserTxt);
-            main.Show();
-            this.Close();
-            
+            ActiveUser = FindActiveUser(username, password);
+            if((ActiveUser.userId != 0) || (ActiveUser.password=="null") || (ActiveUser.userId==0))
+            {
+                MainWindow main = new MainWindow(ActiveUser);
+                main.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("The username/password are incorrect. Please review your information and try again.");
+            }
         }
-        public User FindActiveUser(string username)
+
+        public User FindActiveUser(string username, string password)
         {
             User ActiveUser = new User();
-            string connectionString;
-            SqlConnection con;
-            connectionString = @"Data Source=LAPTOP-PDEKB4VJ;Initial Catalog=Banksys;Integrated Security=True";
-            using (con = new SqlConnection(connectionString))
+            using (connection.con)
             {
-                string qString = "Select * From Banksys.dbo.Users Where Username =@username ";
-                SqlCommand Command = new SqlCommand(qString, con);
-                Command.Parameters.AddWithValue("@username", username);
-                con.Open();
-                using (SqlDataReader Reader = Command.ExecuteReader())
-                {
-                    while (Reader.Read())
-                    {
-                        ActiveUser.name = Reader["Username"].ToString();
-                    }
-                    con.Close();
-                }
+                connection.SelectUser(username, password);
+                connection.GetInfo(ActiveUser);
             }
             return ActiveUser;
         } 

@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:Banksys"
              StartupUri="Login.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="ButtonBrush1">#000d1a</SolidColorBrush>
     </Application.Resources>
 </Application>
